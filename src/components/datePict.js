@@ -1,8 +1,8 @@
 import { Modal, Center, Button } from "native-base";
-import { useState } from "react";
+// import { useState } from "react";
 import DatePicker from "@dietime/react-native-date-picker";
 
-export default Tanggal = (props) => {
+const DatePict = (props) => {
   return (
     <Center>
       <Modal isOpen={props.showModal} onClose={() => props.setShowModal(false)}>
@@ -45,3 +45,5 @@ export default Tanggal = (props) => {
     </Center>
   );
 };
+
+export default DatePict

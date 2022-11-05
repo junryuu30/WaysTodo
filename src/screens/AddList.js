@@ -1,9 +1,16 @@
-import React from "react"
+import React, { useState } from "react"
 import { Box, Text, FormControl, Select, Center, Input, TextArea, Button, VStack
 } from "native-base"
 import { StyleSheet, TouchableOpacity } from "react-native"
 
+import DatePict from "../components/datePict"
+
 const AddList = () => {
+
+    const [showModal, setShowModal] = useState(false);
+    const [date, setDate] = useState()
+
+
     return(
         <>
         <Center>
@@ -40,17 +47,27 @@ const AddList = () => {
                         <Select.Item label="Backend Development" value="backend" />
                         </Select>
                     </FormControl>
+
+                    {/* for select date */}
                     <Button 
                     variant="outline" 
                     w="270"
                     mb={2}
-                    py={4} 
-                    placeholder="Choose Date" 
-
-                    >
-                        <Text color="gray.400" iconName="document-text">
+                    // py={4}  
+                    onPress={() => setShowModal(true)}>
+                        <Text color="gray.400" iconName="document-text"
+                        style={{textAlign:"left"}}
+                        >
+                        {date ? date.toDateString() : "Select date..."}
                         </Text>
                     </Button>
+                    <DatePict
+                        showModal={showModal}
+                        setShowModal={setShowModal}
+                        date={date}
+                        setDate={setDate}
+                    />
+
                     <TextArea 
                     placeholder="Description" 
                     w="270"

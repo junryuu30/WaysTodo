@@ -12,7 +12,8 @@ import Login from "./src/components/Auth/Login";
 import Register from "./src/components/Auth/Register";
 import AddList from "./src/screens/AddList";
 import AddCategory from "./src/screens/AddCategory";
-// import Detail from "./src/screens/Detail";
+import Detail from "./src/screens/Detail";
+
 
 
 
@@ -56,8 +57,7 @@ export default function Container(){
             <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
             <Stack.Screen name="Login" component={Login} options={{headerShown: false}} />
             <Stack.Screen name="Register" component={Register} options={{headerShown: false}} />
-            {/* <Stack.Screen name="Detail" component={Detail} options={{headerShown: false}} /> */}
-
+            <Stack.Screen name="Detail" component={Detail} options={{headerShown: false}} />
             <Stack.Screen name="MyTab" component={MyTab} options={{ headerShown: false, headerTintColor:"white", headerMode:"screen"}}/>
             </Stack.Navigator>
 

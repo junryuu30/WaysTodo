@@ -8,45 +8,47 @@ import { StyleSheet, TouchableOpacity } from "react-native"
 // import ButtonComponent from "../ButtonComponent"
 
 const Login =({navigation})=>{
-    // const [form, setForm] = React.useState({
-    //     firstName:'',
-    //     email:'',
-    //     password:''
-    // });
+    const [form, setForm] = React.useState({
+        firstName:'',
+        email:'',
+        password:''
+    });
 
-    // const handleOnChange= (name, value) => {
-    //     setForm({
-    //         ...form,
-    //         [name]: value,
-    //     });
-    // };
+    const handleOnChange= (name, value) => {
+        setForm({
+            ...form,
+            [name]: value,
+        });
+    };
 
-    // const handleOnPress = async () => {
-    //     try{
-    //         const config = {
-    //             headers:{
-    //                 'Content-type': 'application/json',
-    //             },
-    //         };
 
-    //         const body = JSON.stringify(form);
-    //         const response = await Axios.post('https://api.kontenbase.com/query/api/v1/9dace928-23dd-439a-b8b7-1db74d51d23c/auth/register', body,config)
-    //         console.log(response);
-    //         if (response){
-    //             await AsyncStorage.setItem('token', response.data.token);
-    //         }
 
-    //         const value = await AsyncStorage.getItem('token');
-    //         if (value !== null) {
-    //             console.log(value);
-    //             navigation.navigate("Login")
-    //         }
-    //     }  catch (error) {
-    //         console.log(error);
-    //         alert(error.response.data.message);
-    //     }
+    const handleOnPress = async () => {
+        try{
+            const config = {
+                headers:{
+                    'Content-type': 'application/json',
+                },
+            };
 
-    // };
+            const body = JSON.stringify(form);
+            const response = await Axios.post('https://api.kontenbase.com/query/api/v1/9dace928-23dd-439a-b8b7-1db74d51d23c/auth/register', body,config)
+            console.log(response);
+            if (response){
+                await AsyncStorage.setItem('token', response.data.token);
+            }
+
+            const value = await AsyncStorage.getItem('token');
+            if (value !== null) {
+                console.log(value);
+                navigation.navigate("Login")
+            }
+        }  catch (error) {
+            console.log(error);
+            alert(error.response.data.message);
+        }
+
+    };
 
 
     return(
@@ -67,31 +69,33 @@ const Login =({navigation})=>{
                     type={"email"}
                     placeholder="Email"
                     mb={3}
-                    // value={form.email}
+                    value={form.email}
                     width={300}
-                    // onChangeText={(value) => handleOnChange("email", value)}
+                    onChangeText={(value) => handleOnChange("email", value)}
                     />
                     <Input
                         size="md"
                         placeholder="Name"
                         mb={3}
-                        // value={form.firstName}
+                        value={form.firstName}
                         width={300}
-                        // onChangeText={(value) => handleOnChange("firstName", value)}
+                        onChangeText={(value) => handleOnChange("firstName", value)}
                     />
                     <Input
                         type={"password"}
                         size="md"
                         placeholder="Password"
                         mb={3}
-                        // value={form.password}
+                        value={form.password}
                         width={300}
-                        // onChangeText={(value) => handleOnChange("password", value)}
+                        onChangeText={(value) => handleOnChange("password", value)}
                     />
 
-                    <TouchableOpacity title="Login" style={styleLogin.buttonLogin}>
+                    <TouchableOpacity title="Login" style={styleLogin.buttonLogin}
+                    onPress={handleOnPress}
+                    >
                         <Text style={{fontSize:20, fontWeight:'bold', color:"#FFFFFF"}} 
-                            // onPress={handleOnPress}
+                            
                         >
                         Register
                         </Text>

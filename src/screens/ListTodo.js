@@ -1,25 +1,35 @@
-import React, { useState } from "react"
+import * as React from 'react'
 import { 
     ScrollView,
     Text,
     HStack,
     Box,
     Image,
-    Input,
     Select,
     CheckIcon,
     VStack,
-    Center
+    Center,
+    Button,
 } from "native-base"
-import fotoProfile from "../../assets/fotoProfile.png"
-// import Tanggal from "../components/datePict"
 
-const check = "https://res.cloudinary.com/dzayqrrm6/image/upload/v1667482736/icon__Check_Circle__zk0lh7.png"
+import fotoProfile from "../../assets/fotoProfile.png"
+import checked from "../../assets/checked.png"
+import { Pressable } from "react-native"
+// import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
+// import { Ionicons } from '@expo/vector-icons'
+
+import DatePict from '../components/datePict'
 
 
 const ListTodo = ({navigation}) => {
-    const [showModal, setShowModal] = useState(false);
-    const [date, setDate] = useState();
+
+    const [showModal, setShowModal] = React.useState(false);
+    const [date, setDate] = React.useState()
+
+
+    const handleDetail=()=>{
+        navigation.navigate("Detail")
+    }
 
 
     return(
@@ -36,17 +46,38 @@ const ListTodo = ({navigation}) => {
                         <Image source={fotoProfile} resizeMode="contain" alt="Alternate Text" size="50" />
                     </HStack>
 
-
-
                 <HStack alignItems={"center"}>
-                    <Input
+                    {/* <Input
                     size="md"
                     placeholder="Chose date"
                     paddingRight={3}
                     mt={2}
                     marginRight={2}
                     width={24}
+                    // onPress={() => showMode('date')}
+                    /> */}
+
+                    <Button
+                        variant="outline"
+                        onPress={() => setShowModal(true)}
+                        iconName="document-text"
+                        paddingRight={3}
+                        mt={2}
+                        marginRight={2}
+                        width={24}
+                        >
+                        <Text color="gray.400">
+                            {date ? date.toDateString() : "Select date..."}
+                        </Text>
+                    </Button>
+
+                    <DatePict
+                        showModal={showModal}
+                        setShowModal={setShowModal}
+                        date={date}
+                        setDate={setDate}
                     />
+
                     <Select
                     width={24}
                     accessibilityLabel="Category"
@@ -74,9 +105,26 @@ const ListTodo = ({navigation}) => {
 
                 </HStack>
 
+                {/* <Pressable 
+                p={1} 
+                title='DatePicker' 
+                onPress={() => showMode('date')} 
+                bg="blueGray.200" borderRadius={8} borderWidth={2} borderColor="blueGray.400" mb="3" w="120px">
+                    <HStack justifyContent="space-between">
+                            <Text fontSize="xs" color="blueGray.400">{text}</Text>
+                            <Text color="blueGray.400"><Ionicons name="calendar-outline" /></Text>
+                </HStack></Pressable> */}
+
+
+
+
                 <ScrollView>
+                {/* {List.map((item) => { */}
                     <Box mt={12}>
-                        <VStack>
+                        <Pressable
+                            onPress={handleDetail}
+                        >
+                            <VStack>
                                     <HStack
                                         mb={6}
                                         backgroundColor="blue.100"
@@ -117,26 +165,72 @@ const ListTodo = ({navigation}) => {
                                             </Box >
                                             <Image
                                                 mt={2}
-                                                source={{ uri: "https://res.cloudinary.com/dzayqrrm6/image/upload/v1667482736/icon__Check_Circle__zk0lh7.png" }}
+                                                source={checked}
                                                 resizeMode="contain"
                                                 alignItems="center"
-                                                alt={check}
                                                 style={{ width: 40, height: 40, }}
                                             />
                                         </Box>
                                     </HStack>
-                                {/* );
-                            })} */}
-                        </VStack>
+
+
+                                    <HStack
+                                        mb={6}
+                                        backgroundColor="blue.100"
+                                        borderRadius={5}
+                                        padding="3"
+                                        justifyContent={"space-between"}
+                                    >
+                                        <Box>
+                                            <Text bold fontSize="xs" w="64">
+                                                category - name
+                                            </Text>
+                                            <Text fontSize="2xs" 
+                                            w="64"
+                                            mt="5">
+                                                Learn Golang to improve fundamentals and familiarize with
+                                                coding.
+                                            </Text>
+                                            <Text fontSize="2xs" w="64" mt={3}>
+                                                Date
+                                            </Text>
+                                        </Box>
+                                        <Box >
+                                            <Box
+                                                backgroundColor="red.300"
+                                                borderRadius={5}
+                                                marginRight="5"
+                                                alignItems={"flex-end"}
+                                            >
+                                                <Text
+                                                    fontSize="10px"
+                                                    color="black"
+                                                    w={12}
+                                                    textAlign="center"
+                                                >
+                                                    {/* {item.category} */}
+                                                    category
+                                                </Text>
+                                            </Box >
+                                            <Image
+                                                mt={2}
+                                                // source={{ uri: "checked" }}
+                                                source={checked}
+                                                resizeMode="contain"
+                                                alignItems="center"
+                                                style={{ width: 40, height: 40, }}
+                                            />
+                                        </Box>
+                                    </HStack>
+
+                            </VStack>
+                        </Pressable>
+                        
                     </Box>
+
+
                     </ScrollView>
-
-
-
-
                 </Center>
-
-                
 
             </ScrollView>
 
@@ -144,14 +238,6 @@ const ListTodo = ({navigation}) => {
         </>
     )
 }
-
-
-// const styleListTodo = StyleSheet.create({
-//     container1:{
-//         display: flex,
-//         justifyContent: spaceBetween,
-//     },
-// })
 
 
 export default ListTodo

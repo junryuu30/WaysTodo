@@ -1,4 +1,4 @@
-import { Input, Text, VStack, View } from "native-base"
+import { Input, Text, VStack, View, HStack, Button, Center } from "native-base"
 import { StyleSheet, TouchableOpacity } from "react-native"
 
 
@@ -29,14 +29,20 @@ const AddCategory = () => {
                         </Text>
                     </TouchableOpacity>
             </VStack>
-            <Text m={30}
-                style={style.Addlist}
+            
+                <Text m={30}
+                    style={style.Addlist}
                 >List Category</Text>
-                {/* <HStack space={6} mt="6">
-                    <Button size="sm" variant="subtle">
 
+                <Center>
+                    <HStack space={6} mt="6">
+                    <Button size="sm" variant="subtle">
+                        <Text>hallo</Text>
                     </Button>
-                </HStack> */}
+                    </HStack>
+
+                </Center>
+                
 
         </View>
         </>
@@ -46,14 +52,16 @@ const AddCategory = () => {
 const style = StyleSheet.create({
     AddCategory:{
         textAlign:"left",
-        marginLeft: 15,
-        fontSize: 35,
+        marginLeft: 57,
+        marginTop: 35,
+        fontSize: 25,
         fontWeight: "bold",
         marginVertical: 20
     },
     Addlist:{
         textAlign:"left",
-        marginLeft: 15,
+        marginLeft: 57,
+        marginTop: 20,
         fontSize: 25,
         fontWeight: "bold",
         marginVertical: 20
@@ -63,7 +71,7 @@ const style = StyleSheet.create({
         width: 270,
         height: 40,
         marginHorizontal:20,
-        marginTop:30,
+        marginTop:15,
         display:"flex",
         justifyContent:"center",
         alignItems:'center',

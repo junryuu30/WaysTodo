@@ -8,19 +8,30 @@ import {
   HStack,
   Image,
 } from "native-base";
-// import StatusChecked from "../assets/liststodo-icon-checked.png";
 import checked from "../../assets/checked.png"
+import { Pressable } from "react-native";
 
-export default DetailList = () => {
+const Detail = ({navigation}) => {
   // const item = route.params.item;
 //   console.log("oke item", route);
+    const handleList=()=>{
+      navigation.navigate("ListTodo");
+    }
+
+
   return (
     <ScrollView padding={5}>
+
+        <Pressable
+          onPress={handleList}>
+          <Text>Back to My List</Text>
+        </Pressable>
+      
+
       <Box backgroundColor="#DAEFFF" borderRadius="5" mt={10} mb={10}>
         <VStack space="4" divider={<Divider />}>
           <HStack px="4" pt="4">
             <Text fontSize="30px" w="64">
-              {/* {item.category} */}
             </Text>
             <Box>
               <Box backgroundColor="red.300" borderRadius={5} marginRight="5">
@@ -31,7 +42,7 @@ export default DetailList = () => {
                   w={12}
                   textAlign="center"
                 >
-                  Study
+                  Title
                 </Text>
               </Box>
               <Image
@@ -43,32 +54,25 @@ export default DetailList = () => {
             </Box>
           </HStack>
           <Box px="4">
-            NativeBase is a free and open source framework that enable
-            developers to build high-quality mobile apps using React Native iOS
-            and Android apps with a fusion of ES6. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Vel, enim a! Et eos similique a rerum
-            eligendi delectus odio blanditiis nihil error tempore. Sint iste
-            beatae repellendus, autem voluptate similique rerum quis hic ut
-            sequi sunt? Ab laborum iure ad neque. Magnam quibusdam blanditiis,
-            temporibus, sit officiis facilis possimus non distinctio hic, animi
-            nesciunt beatae laboriosam perspiciatis ea explicabo accusamus illum
-            cumque dolor porro. Ipsa iure explicabo laudantium! Fugiat odit
-            voluptatum sapiente minima molestias, iste nostrum veniam deserunt
-            earum provident quae repellendus vero necessitatibus illo a quaerat
-            esse ut doloribus at eius dolore assumenda dignissimos ipsam qui?
-            Fugiat numquam eius voluptatem fugit, esse libero officia aperiam
-            ipsam obcaecati ea quia, harum repudiandae quibusdam perferendis
-            ipsa, facere asperiores quos deserunt minima! Nihil aspernatur vitae
-            ducimus reprehenderit repudiandae hic, debitis odit quis delectus,
-            quos corrupti necessitatibus sapiente, perferendis minus dolores ex.
-            Optio, error quas molestiae voluptate beatae rerum rem enim fugit
-            odit tempora est eaque reprehenderit corporis eos. Eos, ab minus
-            nobis deserunt iusto similique corporis doloremque beatae illum
-            debitis praesentium delectus earum voluptatum expedita consequatur
-            sint autem quaerat officia, numquam reiciendis voluptate accusantium
-            temporibus! Similique ullam accusamus nobis magnam est corrupti
-            maiores possimus cupiditate dolorem officiis, commodi iusto ab
-            ducimus rem.
+           <Text>
+              Get Started with the Basics
+              The best way to learn any programming language is by starting with the basics. Golang is no exception. You can find a variety of introductory tutorials online that will teach you the basics of the language.
+
+              Use a Golang Tutorial
+              Tutorials are a great way to learn a new programming language. They typically include step-by-step instructions that will guide you through the basics of the language. There are a variety of Golang tutorials available online, and you can find a few good ones here:
+
+              Use a Golang Reference Guide
+              A reference guide is a great tool for learning a programming language. It provides a comprehensive overview of the language, including its syntax, features, and usage. You can find a variety of Golang reference guides online, and a few good ones are listed here:
+
+              Join a Golang Forum or Community
+              Joining a Golang forum or community is a great way to get help and learn from others who are also learning the language. There are a number of forums and communities available online, and a few of the better ones are listed below:
+
+              Use a Golang IDE
+              An IDE, or Integrated Development Environment, is a software development tool that provides everything you need to write, compile, and debug your code. There are a number of Golang IDEs available, and a few of the better ones are listed below:
+
+              Use a Golang Compiler
+              A compiler is a software program that translates code written in one programming language into another programming language. There are a number of Golang compilers available, and a few of the better ones are listed below:
+          </Text>
           </Box>
           <Box px="4" pb="4">
             GeekyAnts
@@ -78,3 +82,5 @@ export default DetailList = () => {
     </ScrollView>
   );
 };
+
+export default Detail
