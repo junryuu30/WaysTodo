@@ -3,11 +3,13 @@ import React from "react";
 import { Center, HStack, Image, Text, Input } from "native-base"
 import loginImg from "../../../assets/loginImg.svg"
 import { StyleSheet, TouchableOpacity } from "react-native"
+import axios from "axios"
+import AsyncStorage from "@react-native-async-storage/async-storage";
 // import InputComponent from "../InputComponent"
 // import Axios from "react-native-axios/lib/core/Axios"
 // import ButtonComponent from "../ButtonComponent"
 
-const Login =({navigation})=>{
+const Register =({navigation})=>{
     const [form, setForm] = React.useState({
         firstName:'',
         email:'',
@@ -32,7 +34,7 @@ const Login =({navigation})=>{
             };
 
             const body = JSON.stringify(form);
-            const response = await Axios.post('https://api.kontenbase.com/query/api/v1/9dace928-23dd-439a-b8b7-1db74d51d23c/auth/register', body,config)
+            const response = await axios.post('https://api.v2.kontenbase.com/query/api/v1/fda30547-2f96-4e2c-a3f6-8dd874ae9472/auth/register', body,config)
             console.log(response);
             if (response){
                 await AsyncStorage.setItem('token', response.data.token);
@@ -69,16 +71,16 @@ const Login =({navigation})=>{
                     type={"email"}
                     placeholder="Email"
                     mb={3}
-                    value={form.email}
                     width={300}
+                    value={form.email}
                     onChangeText={(value) => handleOnChange("email", value)}
                     />
                     <Input
                         size="md"
                         placeholder="Name"
                         mb={3}
-                        value={form.firstName}
                         width={300}
+                        value={form.firstName}
                         onChangeText={(value) => handleOnChange("firstName", value)}
                     />
                     <Input
@@ -94,9 +96,7 @@ const Login =({navigation})=>{
                     <TouchableOpacity title="Login" style={styleLogin.buttonLogin}
                     onPress={handleOnPress}
                     >
-                        <Text style={{fontSize:20, fontWeight:'bold', color:"#FFFFFF"}} 
-                            
-                        >
+                        <Text style={{fontSize:20, fontWeight:'bold', color:"#FFFFFF"}}>
                         Register
                         </Text>
                     </TouchableOpacity>
@@ -148,4 +148,4 @@ const styleLogin = StyleSheet.create({
 
 });
 
-export default Login
+export default Register
