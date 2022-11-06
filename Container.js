@@ -11,7 +11,7 @@ import Home from "./src/screens/Home";
 import Login from "./src/components/Auth/Login";
 import Register from "./src/components/Auth/Register";
 import AddList from "./src/screens/AddList";
-import AddCategory from "./src/screens/AddCategory";
+import AddCategory from "./src/screens/AddCatagory";
 import Detail from "./src/screens/Detail";
 
 
